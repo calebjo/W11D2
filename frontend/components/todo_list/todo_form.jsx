@@ -1,12 +1,13 @@
 import React from 'react';
 
-export default class TodoForm extends React.Component {
+class TodoForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            id: new Date().getTime(),
+            id: Math.floor(Math.random() * 100000),
             title: "",
-            body: ""
+            body: "",
+            done: false
         }
         this.updateTitle = this.updateTitle.bind(this)
         this.updateBody = this.updateBody.bind(this)
@@ -24,6 +25,11 @@ export default class TodoForm extends React.Component {
     handleSubmit(e){
         e.preventDefault()
         this.props.receiveTodo(this.state)
+        this.setState({
+            id: Math.floor(Math.random() * 100000),
+            title: "",
+            body: ""
+        });
     }
 
     render(){
@@ -47,3 +53,5 @@ export default class TodoForm extends React.Component {
         )
     }
 }
+
+export default TodoForm;

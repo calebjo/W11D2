@@ -4,14 +4,15 @@ import allTodos from '../../reducers/selectors.js';
 import { receiveTodo, receiveTodos } from '../../actions/todo_actions.js';
 
 const mapStateToProps = state => ({
-    todos: allTodos(state)
+    todos: allTodos(state),
+    state
 });
 
-// const mapDispatchToProps = dispatch => ({
-//     receiveTodo: todo => dispatch(receiveTodo(todo))
-// });
+const mapDispatchToProps = dispatch => ({
+    receiveTodo: todo => dispatch(receiveTodo(todo))
+});
 
 export default connect(
-    mapStateToProps
-    // mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(TodoList);

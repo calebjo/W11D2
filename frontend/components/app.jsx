@@ -1,8 +1,7 @@
 import React from 'react';
-import TodoListContainer from './todos/todo_list_container';
-import TodoFormContainer from './todo_list/todo_form_container';
+import TodoListContainer from './todos/todo_list_container.jsx';
 
-export default class App extends React.Component {
+class App extends React.Component {
     constructor(props){
         super(props)
     }
@@ -11,8 +10,9 @@ export default class App extends React.Component {
         return(
             <div>
                 <TodoListContainer />
-                {/* <TodoFormContainer /> */}
             </div>
         )
     }
 }
+
+export default App;

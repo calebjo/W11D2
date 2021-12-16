@@ -21,10 +21,14 @@ const todosReducer = (prevState = initialState, action) => {
 
     switch (action.type) {
       case RECEIVE_TODOS:
-        return action.todos;
+        action.todos.forEach( todo => {
+          nextState[todo.id] = todo;
+        });
+        return nextState;
       case RECEIVE_TODO:
-        nextState[action.todo.id] = action.todo;
-        return nextState; 
+        debugger
+        const newTodo = {[action.todo.id]: action.todo};
+        return Object.assign({}, prevState, newTodo);
       case REMOVE_TODO:
         delete nextState[action.todo.id];
         return nextState;
